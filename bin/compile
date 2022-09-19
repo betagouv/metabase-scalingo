@@ -7,7 +7,8 @@ METABASE_CSV_PLUGIN_URL="https://github.com/Markenson/csv-metabase-driver/releas
 
 mkdir -p $METABASE_PLUGINS_DIR
 
-if [ "true" == $ENABLE_METABASE_CSV_PLUGIN ]
+ENABLE_METABASE_CSV_PLUGIN=${ENABLE_METABASE_CSV_PLUGIN:-}
+if [ "${ENABLE_METABASE_CSV_PLUGIN}" == "true" ]
 then
     echo -n "- Install CSV plugin : "
     cd $METABASE_PLUGINS_DIR
