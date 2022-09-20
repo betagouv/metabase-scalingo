@@ -2,16 +2,26 @@
 
 set -eu
 
+if [ -n "$BUILDPACK_DEBUG" ]; then
+  set -x
+fi
+
+if:IsSet() {
+  [[ ${!1-x} == x ]] && return 1 || return 0
+}
+
 METABASE_PLUGINS_DIR="$1/plugins"
 METABASE_CSV_PLUGIN_URL="https://github.com/Markenson/csv-metabase-driver/releases/download/v1.3.1/csv.metabase-driver.jar"
 
 mkdir -p $METABASE_PLUGINS_DIR
 
-ENABLE_METABASE_CSV_PLUGIN=${ENABLE_METABASE_CSV_PLUGIN:-}
+export ENABLE_METABASE_CSV_PLUGIN
+if:IsSet ENABLE_METABASE_CSV_PLUGIN || ENABLE_METABASE_CSV_PLUGIN=""
+
 if [ "${ENABLE_METABASE_CSV_PLUGIN}" == "true" ]
 then
     echo -n "- Install CSV plugin : "
     cd $METABASE_PLUGINS_DIR
-    wget $METABASE_CSV_PLUGIN_URL    
+    wget $METABASE_CSV_PLUGIN_URL
     echo "Done"
 fi
