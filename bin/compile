@@ -2,13 +2,17 @@
 
 set -eu
 
+if:IsSet() {
+  [[ ${!1-x} == x ]] && return 1 || return 0
+}
+
+export BUILDPACK_DEBUG
+if:IsSet BUILDPACK_DEBUG || BUILDPACK_DEBUG=""
+
 if [ -n "$BUILDPACK_DEBUG" ]; then
   set -x
 fi
 
-if:IsSet() {
-  [[ ${!1-x} == x ]] && return 1 || return 0
-}
 
 METABASE_PLUGINS_DIR="$1/plugins"
 METABASE_CSV_PLUGIN_URL="https://github.com/Markenson/csv-metabase-driver/releases/download/v1.3.1/csv.metabase-driver.jar"
