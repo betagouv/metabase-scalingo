@@ -26,6 +26,6 @@ if [ "${ENABLE_METABASE_CSV_PLUGIN}" == "true" ]
 then
     echo -n "- Install CSV plugin : "
     cd $METABASE_PLUGINS_DIR
-    curl -fsSL $METABASE_CSV_PLUGIN_URL
+    wget $METABASE_CSV_PLUGIN_URL
     echo "Done"
 fi
