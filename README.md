@@ -2,6 +2,8 @@
 
 # Deploying Metabase to Scalingo
 
+With [oauth2-proxy](https://oauth2-proxy.github.io/oauth2-proxy/) filter, see usage example on https://github.com/betagouv/oauth2-deploy-demo
+
 ## Deploying Using Scalingo's One-click Button
 
 Click on the button below to deploy Metabase to Scalingo within minutes.
