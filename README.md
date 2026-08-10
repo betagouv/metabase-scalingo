@@ -2,6 +2,8 @@
 
 # Deploying Metabase to Scalingo
 
+See also the [oauth2 branch](https://github.com/betagouv/metabase-scalingo/tree/oauth2) to add a oauth2-proxy authentification filter before your app.
+
 ## Deploying Using Scalingo's One-click Button
 
 Click on the button below to deploy Metabase to Scalingo within minutes.
@@ -56,7 +58,8 @@ on your needs:
 | -------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------- |
 | `BUILDPACK_URL`      | URL of the buildpack to use.                                                             | https://github.com/Scalingo/multi-buildpack.git |
 | `DATABASE_URL`       | URL of your database addon. **Only available if you have a database addon provisioned**. | Provided by Scalingo                            |
-| `MAX_METASPACE_SIZE` | Maximum amount of memory allocated to Java Metaspace[^1].                                | `512m` (512MB)                                  |
+| `MAX_METASPACE_SIZE` | Maximum amount of memory allocated to Java Metaspace[^1].                                | `512m` (512MB)     
+| `METABASE_VERSION`   | Force the metabase version (default=latest) |
 
 Metabase also [supports many environment variables](https://www.metabase.com/docs/latest/operations-guide/environment-variables.html).
 
@@ -65,7 +68,7 @@ Metabase also [supports many environment variables](https://www.metabase.com/doc
 # Updating Metabase on Scalingo
 
 To upgrade to the latest version of Metabase, you only need to redeploy it,
-this will retrieve the latest version avaible on [the Metabase buildpack](https://github.com/metabase/metabase-buildpack).
+this will retrieve the latest version available on [the Metabase buildpack](https://github.com/metabase/metabase-buildpack). Use `METABASE_VERSION` to customize this.
 
 ## Updating After Deploying Using Scalingo's One-click Button
 
